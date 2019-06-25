@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  postsUrl:'/facebook/assets/posts.json' // bedzie uzyty gdy przy budowaniu uzyjemy --prod
+
 };

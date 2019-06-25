@@ -5,6 +5,7 @@ import { PostsService } from './posts.service';
 import { HomePageComponent } from 'src/app/core/pages/home-page/home-page.component';
 import { IPostList } from '../interfaces/post-list.interface';
 import { IPostListItem } from '../interfaces/post-list-item.interface';
+import { environment } from 'src/environments/environment';
 
 describe('PostsService', () => {
     let httpMock: HttpTestingController
@@ -46,7 +47,7 @@ describe('PostsService', () => {
 
             // 2. stworzyc serwer HTTP, ktory bedzie zwracal mock data
             //const httpMock = TestBed.get(HttpTestingController);
-            const server = httpMock.expectOne('assets/posts.json');
+            const server = httpMock.expectOne(environment.postsUrl);
 
             const fakePostList = [
                 { id: 'asdfas' },
@@ -91,7 +92,7 @@ describe('PostsService', () => {
 
             // 2. stworzyc serwer HTTP, ktory bedzie zwracal mock data
             //const httpMock = TestBed.get(HttpTestingController);
-            const server = httpMock.expectOne('assets/posts.json');
+            const server = httpMock.expectOne(environment.postsUrl);
 
             const fakePost = { id: 'aaaaaaaaaaaaaa' } as IPostListItem;
 
