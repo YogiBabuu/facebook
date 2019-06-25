@@ -1,5 +1,10 @@
 <ng-container *ngIf="post">
 
+<!-- <pre>
+
+    {{post | json}}
+</pre> -->
+
     <div
         class="card"
         style="width: 18rem;"
@@ -7,6 +12,7 @@
         <img
             [src]="post.images[0]"
             class="card-img-top"
+            routerLink="posts/{{post.id}}"
             alt
         >
         <div class="card-body">
