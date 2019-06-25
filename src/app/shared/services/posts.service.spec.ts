@@ -3,6 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { PostsService } from './posts.service';
 import { HomePageComponent } from 'src/app/core/pages/home-page/home-page.component';
+import { IPostList } from '../interfaces/post-list.interface';
 
 describe('PostsService', () => {
     let httpMock: HttpTestingController
@@ -37,23 +38,34 @@ describe('PostsService', () => {
                 jasmine.any(Function))
         });
 
-        it('should make HTTP request', async () =>{ // dodalismy asynch
-            
+        it('should make HTTP request', async () => { // dodalismy asynch
+
             // 1. zarejestrowac request
             const request = service.getPosts(); // Promise
 
             // 2. stworzyc serwer HTTP, ktory bedzie zwracal mock data
             //const httpMock = TestBed.get(HttpTestingController);
             const server = httpMock.expectOne('assets/posts.json');
-            
+
+            const fakePostList = [
+                { id: 'asdfas' },
+                { id: 'asfghdfas' }
+
+            ] as IPostList;
+
             // 2a. Zwracamy dane testowe
-            server.flush(['pierwszy', 'drugi']);
+            server.flush(
+                {
+                    posts: fakePostList
+                });
+
+
 
             // 3. pobrac dane z response
             const posts = await request;
 
             // 4. Sprawdzic poprawnosc otrzymanych data
-            expect(posts).toEqual(['pierwszy', 'drugi']);
+            expect(posts).toEqual(fakePostList);
         })
 
     });

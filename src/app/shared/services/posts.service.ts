@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
+import { IResponsePosts } from '../interfaces/response/response-posts.interface';
+
+
+
 @Injectable({
     providedIn: 'root'
 })
@@ -11,7 +15,9 @@ export class PostsService {
         private http: HttpClient
     ) { }
 
-    getPosts() {
-        return this.http.get('assets/posts.json').toPromise();
+    async getPosts() {
+
+        const response = await this.http.get<IResponsePosts>('assets/posts.json').toPromise();
+        return response.posts;
     }
 }
