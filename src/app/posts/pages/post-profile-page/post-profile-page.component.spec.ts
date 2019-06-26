@@ -6,6 +6,7 @@ import { PostProfilePageComponent } from './post-profile-page.component';
 import { PostListComponent } from '../../components/post-list/post-list.component';
 import { PostListItemComponent } from '../../components/post-list-item/post-list-item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CommentsModule } from 'src/app/comments/comments.module';
 
 describe('PostProfilePageComponent', () => {
     let component: PostProfilePageComponent;
@@ -23,7 +24,8 @@ describe('PostProfilePageComponent', () => {
             [
                 RouterTestingModule,
                 SharedModule,
-                HttpClientTestingModule
+                HttpClientTestingModule,
+                CommentsModule
             ]
         })
             .compileComponents();

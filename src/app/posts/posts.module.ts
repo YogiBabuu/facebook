@@ -5,6 +5,7 @@ import { PostListItemComponent } from './components/post-list-item/post-list-ite
 import { SharedModule } from '../shared/shared.module';
 import { PostProfilePageComponent } from './pages/post-profile-page/post-profile-page.component';
 import { RouterModule } from '@angular/router';
+import { CommentsModule } from '../comments/comments.module';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { RouterModule } from '@angular/router';
     imports: [
         CommonModule,
         SharedModule,
-        RouterModule
+        RouterModule,
+        CommentsModule
 
     ]
 })
