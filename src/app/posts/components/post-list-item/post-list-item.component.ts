@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
     selector: 'app-post-list-item',
@@ -14,6 +15,10 @@ export class PostListItemComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+    }
+
+    onAddComment(comment){
+        console.log("oAddComment()", comment);
     }
 
 }

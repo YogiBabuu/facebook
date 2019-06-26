@@ -1,30 +1,49 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommentListComponent } from './comment-list.component';
+import { ICommentListItem } from 'src/app/shared/interfaces/comment-list-item.interface';
+import { CommentListItemComponent } from '../comment-list-item/comment-list-item.component';
 
 describe('CommentListComponent', () => {
-  let component: CommentListComponent;
-  let fixture: ComponentFixture<CommentListComponent>;
-let $component: any
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CommentListComponent ]
+    
+    let component: CommentListComponent;
+    let fixture: ComponentFixture<CommentListComponent>;
+    let $component: any
+
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                CommentListComponent,
+                CommentListItemComponent
+            ]
+        })
+            .compileComponents();
+    }));
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(CommentListComponent);
+        component = fixture.componentInstance;
+        $component = fixture.nativeElement;
+        fixture.detectChanges();
+    });
+
+    afterEach(() => {
+        $component.remove();
     })
-    .compileComponents();
-  }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CommentListComponent);
-    component = fixture.componentInstance;
-    $component = fixture.nativeElement;
-    fixture.detectChanges();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 
-  afterEach(() => {
-    $component.remove();
-})
+    it('should display list of comments', () => {
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+        component.comments = [
+            { id: 'adsfasdfaasfds' } as ICommentListItem,
+            { id: '089098098908908' } as ICommentListItem
+        ]
+        fixture.detectChanges();
+        const $comments = $component.querySelectorAll('app-comment-list-item');
+        expect($comments.length).toBeGreaterThan(0);
+    });
+
 });

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommentListItemComponent } from './comment-list-item.component';
+import { ICommentListItem } from 'src/app/shared/interfaces/comment-list-item.interface';
 
 describe('CommentListItemComponent', () => {
     let component: CommentListItemComponent;
@@ -29,4 +30,19 @@ describe('CommentListItemComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+
+    it('should display body details', () => {
+
+        component.comment = {
+            body: 'To jest jakis komentarz' 
+        }  as ICommentListItem;
+
+        fixture.detectChanges();
+
+        const $comment = $component.querySelector('.comment-body');
+        expect($comment.textContent.trim()).toEqual('To jest jakis komentarz');
+    });
+
+
 });

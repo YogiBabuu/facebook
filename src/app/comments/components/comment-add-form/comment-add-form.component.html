@@ -1,16 +1,42 @@
-<form class="form-inline">
+<form
+    class="form-inline"
+    (ngSubmit)="onSubmit()"
+    #commentForm="ngForm"
 
+>
+<!-- <pre>
+    {{commentForm.errors | json}} 
+    
+    {{ body.errors | json}}
+</pre> -->
+
+    <!-- Template Reference Variable -->
     <div class="form-group mr-3">
         <input
             type="text"
             class="form-control"
+            [class.is-invalid]="body.invalid && body.dirty"
             placeholder="Wpisz komentarz..."
+            name="body"
+            #body="ngModel"
+            [(ngModel)]="comment.body"
+            required
+            minlength="3"
+
         >
     </div>
     <button
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-primary mb-2"
+        [disabled]="commentForm.invalid"
     >
         Dodaj
     </button>
+
+    <small class="alert alert-danger" *ngIf="body.errors && body.dirty">
+        <span *ngIf="body.errors['required']"
+        >Aby dodac komentarz wpisz text
+    </span>
+    </small>
+
 </form>
