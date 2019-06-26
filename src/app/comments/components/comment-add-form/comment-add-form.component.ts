@@ -22,6 +22,7 @@ export class CommentAddFormComponent implements OnInit {
 
 	onSubmit(commentForm) {
 		console.log('onSubmit()', this.comment);
+		
 		this.addComment.next(
 			// Deep copy of the comment object
 			Object.assign({}, this.comment)

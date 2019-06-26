@@ -1,4 +1,8 @@
 <div class="mx-auto col-6">
+
+    <app-post-add-form
+    (addPost)="onAddPost($event)"></app-post-add-form>
+
     <app-post-list
         class="m-3"
         [posts]="allPosts"
