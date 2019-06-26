@@ -11,14 +11,17 @@ export class PostListItemComponent implements OnInit {
 
     @Input() post = null;
 
-
     constructor() { }
 
     ngOnInit() {
     }
 
-    onAddComment(comment){
-        console.log("oAddComment()", comment);
+    onAddComment(comment) {
+        console.log("onAddComment()", comment);
+        if (!Array.isArray(this.post.comments)) {
+            this.post.comments = [];
+        }
+        this.post.comments.push(comment);
     }
 
 }

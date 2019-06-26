@@ -10,9 +10,8 @@ export class CommentAddFormComponent implements OnInit {
 
 	comment = {
 		body: null
+	};
 
-	}
- 
 	@Output() addComment = new EventEmitter();
 
 	constructor() { }
@@ -21,8 +20,16 @@ export class CommentAddFormComponent implements OnInit {
 
 	}
 
-	onSubmit() {
+	onSubmit(commentForm) {
 		console.log('onSubmit()', this.comment);
-		this.addComment.next(this.comment);
+		this.addComment.next(
+			// Deep copy of the comment object
+			Object.assign({}, this.comment)
+		);
+		// Reset comment body
+		//this.comment.body = null
+
+		commentForm.reset();
+
 	}
 }

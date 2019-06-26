@@ -2,9 +2,8 @@
     class="form-inline"
     (ngSubmit)="onSubmit()"
     #commentForm="ngForm"
-
 >
-<!-- <pre>
+    <!-- <pre>
     {{commentForm.errors | json}} 
     
     {{ body.errors | json}}
@@ -22,7 +21,6 @@
             [(ngModel)]="comment.body"
             required
             minlength="3"
-
         >
     </div>
     <button
@@ -33,10 +31,11 @@
         Dodaj
     </button>
 
-    <small class="alert alert-danger" *ngIf="body.errors && body.dirty">
-        <span *ngIf="body.errors['required']"
-        >Aby dodac komentarz wpisz text
-    </span>
+    <small
+        class="alert alert-danger"
+        *ngIf="body.errors && body.dirty"
+    >
+        <span *ngIf="body.errors['required']">Aby dodac komentarz wpisz text</span>
     </small>
 
 </form>

@@ -18,9 +18,7 @@ describe('CommentAddFormComponent', () => {
             imports:[
                 FormsModule
             ]
-
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {
@@ -30,10 +28,10 @@ describe('CommentAddFormComponent', () => {
         fixture.detectChanges();
     });
 
-
     afterEach(() => {
         $component.remove();
-    })
+    });
+
     it('should create', () => {
         expect(component).toBeTruthy();
     });
