@@ -1,26 +1,44 @@
 <ng-container *ngIf="post">
 
-<!-- <pre>
+    <!-- <pre>
 
     {{post | json}}
 </pre> -->
 
-    <div
-        class="card"
-        style="width: 18rem;"
-    >
+    <div class="card">
+        <div class="card-header d-flex">
+
+            <img
+                [src]="post.author.avatar_url"
+                class="avatar rounded-sm mr-3"
+                alt
+            >
+
+            <!-- <img [src]="getPostAuthorAvatar()"
+        class="avatar rm-3 rounded"
+        alt=""/> -->
+            <div>
+
+                <h5 class="card-title">{{post.author.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    <a routerLink="/posts/{{post.id}}">{{post.created_time|myDate}}</a>
+                </h6>
+            </div>
+        </div>
         <img
             [src]="post.images[0]"
             class="card-img-top"
             routerLink="/posts/{{post.id}}"
             alt
         >
+
         <div class="card-body">
-            <h5 class="card-title">{{post.author.name}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{post.created_time|myDate}}</h6>
+
             <p class="card-text">{{post.body}}</p>
-            
+
         </div>
+        <div class="card-footer text-muted">2 days ago</div>
+
     </div>
 
 </ng-container>
