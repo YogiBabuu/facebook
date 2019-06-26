@@ -73,7 +73,7 @@ describe('PostsService', () => {
     });
 
 
-    describe('getPostsById', () => {
+    describe('fetchPostsById', () => {
 
         it('should contain method "getPostsId"', () => {
             const service: PostsService = TestBed.get(PostsService);

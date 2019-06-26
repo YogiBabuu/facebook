@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  postsUrl:'/assets/posts.json'
+  postsUrl: '/assets/posts.json',
+
+  // postsUrl: 'https://example.org/assets/posts.json'
 };
 
 /*
